@@ -51,6 +51,7 @@ estoque = {
 }
 
 json.dump(estoque, open("estoque.json", "w"))
+lista_produtos = list(estoque.values())
 
 print("\n" + "=" * 40)
 print("           PRODUTO EM ESTOQUE")
@@ -82,3 +83,28 @@ print("\n--- ATUALIZAÇÃO ---")
 print(f"Última atualização: {estoque['102']['ultima_atualizacao']}")
 
 print("=" * 40)
+
+def listar_produtos(lista_produtos):
+    if not lista_produtos:
+        print("\nNenhum produto cadastrado no estoque.")
+        return
+
+    print("\n" + "=" * 70)
+    print("                         PRODUTOS EM ESTOQUE")
+    print("=" * 70)
+
+    print(f"{'NOME':<30} {'CATEGORIA':<15} {'QUANTIDADE':<12} {'PREÇO':>10}")
+    print("-" * 70)
+
+    for produto in lista_produtos:
+        print(
+            f"{produto['nome']:<30} "
+            f"{produto['categoria']:<15} "
+            f"{produto['quantidade']:<12} "
+            f"R$ {produto['preco_venda']:>7.2f}"
+        )
+
+    print("=" * 70)
+
+
+listar_produtos(lista_produtos)
