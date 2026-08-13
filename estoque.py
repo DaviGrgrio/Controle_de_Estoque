@@ -57,7 +57,7 @@ print("\n" + "=" * 40)
 print("           PRODUTO EM ESTOQUE")
 print("=" * 40)
 
-print(f"ID: {102}")
+print(f"ID: {103}")
 print(f"Nome: {estoque['102']['nome']}")
 print(f"Categoria: {estoque['102']['categoria']}")
 print(f"Código de barras: {estoque['102']['codigo_de_barras']}")
@@ -103,6 +103,16 @@ def listar_produtos(lista_produtos):
             f"{produto['quantidade']:<12} "
             f"R$ {produto['preco_venda']:>7.2f}"
         )
+
+        if produto["quantidade"] < produto["estoque_minimo"]:
+            print()
+            print(
+                f"    \033[91mOBSERVAÇÃO:\033[0m {produto['nome']} está abaixo do "
+                f"\033[91mestoque mínimo.\033[0m\n"
+                f"    Quantidade atual: {produto['quantidade']} | "
+                f"Mínimo: {produto['estoque_minimo']}"
+            )
+            print()
 
     print("=" * 70)
 
