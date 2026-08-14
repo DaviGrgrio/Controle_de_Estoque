@@ -13,3 +13,4 @@ if opcao == "1":
     produto = input("Digite o nome do produto: ")
     quantidade = int(input("Digite a quantidade: "))
 elif opcao == "2": 
+    pass
