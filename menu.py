@@ -14,3 +14,5 @@ if opcao == "1":
     quantidade = int(input("Digite a quantidade: "))
 elif opcao == "2": 
     pass
+
+    
