@@ -1,90 +1,34 @@
 import json
 
-estoque = {
-    "101": {
-        "nome": "Parafuso Sextavado M8",
-        "categoria": "Ferragens",
-        "codigo_de_barras": "7891234567890",
-        "corredor": "A",
-        "prateleira": 2,
-        "quantidade": 150,
-        "estoque_minimo": 50,
-        "estoque_maximo": 500,
-        "preco_custo": 0.45,
-        "preco_venda": 1.2,
-        "fornecedor": "Metalurgica Silva",
-        "data_validade": None,
-        "ultima_atualizacao": "2026-08-01 14:30"
-    },
 
-    "102": {
-        "nome": "Detergente Neutro 500ml",
-        "categoria": "Limpeza",
-        "codigo_de_barras": "7890987654321",
-        "corredor": "B",
-        "prateleira": 1,
-        "quantidade": 12,
-        "estoque_minimo": 20,
-        "estoque_maximo": 100,
-        "preco_custo": 1.8,
-        "preco_venda": 3.5,
-        "fornecedor": "Quimica Clean",
-        "data_validade": "2027-12-31",
-        "ultima_atualizacao": "2026-08-05 09:15"
-    },
+# ============================================================
+# FUNÇÃO: SALVAR O ESTOQUE NO ARQUIVO JSON
+# ============================================================
 
-    "103": {
-        "nome": "Lâmpada LED 9W 6500K",
-        "categoria": "Eletrônicos",
-        "codigo_de_barras": "7895554443332",
-        "corredor": "C",
-        "prateleira": 4,
-        "quantidade": 45,
-        "estoque_minimo": 15,
-        "estoque_maximo": 150,
-        "preco_custo": 4.5,
-        "preco_venda": 9.9,
-        "fornecedor": "Luz & Cia",
-        "data_validade": None,
-        "ultima_atualizacao": "2026-08-06 10:00"
-    }
-}
+def salvar_estoque(estoque):
+    # Abre o arquivo estoque.json no modo "w" (escrita).
+    # O encoding="utf-8" permite salvar caracteres como "ã", "ç" e "é".
+    with open("estoque.json", "w", encoding="utf-8") as arquivo:
 
-json.dump(estoque, open("estoque.json", "w"))
-lista_produtos = list(estoque.values())
+        # json.dump() transforma o dicionário Python em formato JSON
+        # e salva o conteúdo dentro do arquivo.
+        #
+        # indent=4 organiza o arquivo com espaçamento.
+        # ensure_ascii=False mantém os caracteres especiais.
+        json.dump(estoque, arquivo, indent=4, ensure_ascii=False)
 
-print("\n" + "=" * 40)
-print("           PRODUTO EM ESTOQUE")
-print("=" * 40)
 
-print(f"ID: {103}")
-print(f"Nome: {estoque['102']['nome']}")
-print(f"Categoria: {estoque['102']['categoria']}")
-print(f"Código de barras: {estoque['102']['codigo_de_barras']}")
+# ============================================================
+# FUNÇÃO: LISTAR PRODUTOS
+# ============================================================
 
-print("\n--- LOCALIZAÇÃO ---")
-print(f"Corredor: {estoque['102']['corredor']}")
-print(f"Prateleira: {estoque['102']['prateleira']}")
+def listar_produtos(estoque):
 
-print("\n--- ESTOQUE ---")
-print(f"Quantidade: {estoque['102']['quantidade']}")
-print(f"Estoque mínimo: {estoque['102']['estoque_minimo']}")
-print(f"Estoque máximo: {estoque['102']['estoque_maximo']}")
+    # values() retorna somente os produtos do dicionário,
+    # sem retornar os IDs.
+    lista_produtos = list(estoque.values())
 
-print("\n--- PREÇOS ---")
-print(f"Preço de custo: R$ {estoque['102']['preco_custo']:.2f}")
-print(f"Preço de venda: R$ {estoque['102']['preco_venda']:.2f}")
-
-print("\n--- FORNECIMENTO ---")
-print(f"Fornecedor: {estoque['102']['fornecedor']}")
-print(f"Data de validade: {estoque['102']['data_validade']}")
-
-print("\n--- ATUALIZAÇÃO ---")
-print(f"Última atualização: {estoque['102']['ultima_atualizacao']}")
-
-print("=" * 40)
-
-def listar_produtos(lista_produtos):
+    # Verifica se não existem produtos cadastrados.
     if not lista_produtos:
         print("\nNenhum produto cadastrado no estoque.")
         return
@@ -93,10 +37,21 @@ def listar_produtos(lista_produtos):
     print("                         PRODUTOS EM ESTOQUE")
     print("=" * 70)
 
+    # Os símbolos < e > servem para alinhar o texto.
+    #
+    # <30 = ocupa 30 espaços e alinha à esquerda.
+    # <15 = ocupa 15 espaços e alinha à esquerda.
+    # <12 = ocupa 12 espaços e alinha à esquerda.
+    # >10 = ocupa 10 espaços e alinha à direita.
     print(f"{'NOME':<30} {'CATEGORIA':<15} {'QUANTIDADE':<12} {'PREÇO':>10}")
+
     print("-" * 70)
 
+    # Percorre cada produto da lista.
     for produto in lista_produtos:
+
+        # f-string permite colocar valores de variáveis
+        # diretamente dentro do texto.
         print(
             f"{produto['nome']:<30} "
             f"{produto['categoria']:<15} "
@@ -104,17 +59,84 @@ def listar_produtos(lista_produtos):
             f"R$ {produto['preco_venda']:>7.2f}"
         )
 
+        # Verifica se a quantidade está abaixo do estoque mínimo.
         if produto["quantidade"] < produto["estoque_minimo"]:
+
             print()
+
+            # \033[91m muda a cor do texto para vermelho.
+            # \033[0m retorna a cor do terminal ao padrão.
             print(
-                f"    \033[91mOBSERVAÇÃO:\033[0m {produto['nome']} está abaixo do "
-                f"\033[91mestoque mínimo.\033[0m\n"
+                f"    \033[91mOBSERVAÇÃO:\033[0m "
+                f"{produto['nome']} está abaixo do "
+                f"\033[91mestoque mínimo.\033[0m"
+            )
+
+            print(
                 f"    Quantidade atual: {produto['quantidade']} | "
                 f"Mínimo: {produto['estoque_minimo']}"
             )
+
             print()
 
     print("=" * 70)
 
 
-listar_produtos(lista_produtos)
+# ============================================================
+# FUNÇÃO: BUSCAR PRODUTO
+# ============================================================
+
+def buscar_produto(estoque, id_produto):
+
+    # Verifica se o ID informado existe no dicionário.
+    if id_produto in estoque:
+
+        # Guarda as informações do produto em uma variável.
+        produto = estoque[id_produto]
+
+        print("\n" + "=" * 40)
+        print("           PRODUTO ENCONTRADO")
+        print("=" * 40)
+
+        print(f"ID: {id_produto}")
+        print(f"Nome: {produto['nome']}")
+        print(f"Categoria: {produto['categoria']}")
+        print(f"Código de barras: {produto['codigo_de_barras']}")
+
+        print("\n--- LOCALIZAÇÃO ---")
+        print(f"Corredor: {produto['corredor']}")
+        print(f"Prateleira: {produto['prateleira']}")
+
+        print("\n--- ESTOQUE ---")
+        print(f"Quantidade: {produto['quantidade']}")
+        print(f"Estoque mínimo: {produto['estoque_minimo']}")
+        print(f"Estoque máximo: {produto['estoque_maximo']}")
+
+        print("\n--- PREÇOS ---")
+
+        # :.2f faz o número aparecer com duas casas decimais.
+        # Exemplo: 3.5 passa a ser 3.50.
+        print(f"Preço de custo: R$ {produto['preco_custo']:.2f}")
+        print(f"Preço de venda: R$ {produto['preco_venda']:.2f}")
+
+        print("\n--- FORNECIMENTO ---")
+        print(f"Fornecedor: {produto['fornecedor']}")
+        print(f"Data de validade: {produto['data_validade']}")
+
+        print("\n--- ATUALIZAÇÃO ---")
+        print(f"Última atualização: {produto['ultima_atualizacao']}")
+
+        print("=" * 40)
+
+    else:
+
+        # \033[91m muda o texto para vermelho.
+        # \033[0m volta para a cor padrão.
+        print("\033[91m")
+        print("=" * 40)
+        print("       ⚠ PRODUTO NÃO ENCONTRADO ⚠")
+        print("=" * 40)
+        print(f"ID informado: {id_produto}")
+        print("Verifique o ID e tente novamente.")
+        print("=" * 40)
+        print("\033[0m")
