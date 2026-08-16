@@ -16,10 +16,10 @@ Permitir o cadastro e gerenciamento de produtos, facilitando o controle das quan
 - Estrutura de repetição: while
 - Estruturas condicionais: if/elif/else
 # Como executar o projeto
--Instale o Python no computador
--Baixe ou clone este repositório
--Abra a pasta do projeto no computador
--Execute o arquivo principal do programa
+- Instale o Python no computador
+- Baixe ou clone este repositório
+- Abra a pasta do projeto no computador
+- Execute o arquivo principal do programa
 # Autores
 - Davi Granjeiro
 - Maria Giovanna
