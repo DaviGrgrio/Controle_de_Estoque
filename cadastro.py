@@ -17,14 +17,8 @@ def validacao(msg):
 
         # Repetição para Cadastro do Produto.
 
-def menu_produtos():
-    print("1 - Cadastrar produto")
-    opcao = input("Digite uma opção: ")
-    print(opcao)
-    
-    # Inserção de Dados.
-    if opcao == "1":
-        print("Você escolheu cadastrar um produto!")
+def cadastrar():
+        print("Você escolheu cadastrar um produto!\n")
         
         id = validacao(("Digite o ID do produto: ")).upper()
         nome = validacao(("Nome do produto: ")).upper()
@@ -69,5 +63,3 @@ def menu_produtos():
 
         print("Produto cadastrado!")
 
-    else:
-        print("Opção inválida!")
