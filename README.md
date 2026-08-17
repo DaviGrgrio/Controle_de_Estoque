@@ -37,14 +37,15 @@ Permitir o cadastro e gerenciamento de produtos, facilitando o controle das quan
 - Execute o arquivo principal do programa; menu.py.
 
 # Apresentação 
-
+====================
 CONTROLE DE ESTOQUE
-1 - Cadastrar produto
-2 - Consultar estoque
-3 - Adicionar quantidade
-4 - Retirar quantidade
-5 - Excluir produto
-6 - Sair
+====================
+  1 - Cadastrar produto
+  2 - Consultar estoque
+  3 - Adicionar quantidade
+  4 - Retirar quantidade
+  5 - Excluir produto
+  6 - Sair
 
 # Autores
 - Davi Gregorio
