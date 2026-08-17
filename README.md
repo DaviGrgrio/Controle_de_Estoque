@@ -12,13 +12,13 @@ Permitir o cadastro e gerenciamento de produtos, facilitando o controle das quan
 - Excluir produtos: Remove um produto.
 - Encerramento do sistema: Finaliza o programa.
 # Arquivos existentes
-  Controle_de_Estoque/
-  ├── cadastro.py
-  ├── estoque.py
-  ├── menu.py
-  ├── estoque.json
-  ├── testes.py
-  └── README.md
+  Controle_de_Estoque/ 
+├── cadastro.py
+├── estoque.py
+├── menu.py
+├── estoque.json
+├── testes.py
+└── README.md
 # O que foi utilizado para compor o código
 - Python
 - Estrutura de dados: dicionário
@@ -45,7 +45,6 @@ CONTROLE DE ESTOQUE
 2 - Consultar estoque
 
 3 - Adicionar quantidade
-
 4 - Retirar quantidade
 
 5 - Excluir produto
