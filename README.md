@@ -21,7 +21,7 @@ Permitir o cadastro e gerenciamento de produtos, facilitando o controle das quan
 - Abra a pasta do projeto no computador
 - Execute o arquivo principal do programa
 # Autores
-- Davi Granjeiro
+- Davi Gregorio
 - Maria Giovanna
 - Maria Jaqueline
 - Maria Luiza
