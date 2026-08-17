@@ -34,7 +34,8 @@ Permitir o cadastro e gerenciamento de produtos, facilitando o controle das quan
 - Instale o Python no computador
 - Baixe ou clone este repositório
 - Abra a pasta do projeto no computador
-- Execute o arquivo principal do programa; menu.py
+- Execute o arquivo principal do programa; menu.py.
+
 # Apresentação 
 ========================================
 CONTROLE DE ESTOQUE
