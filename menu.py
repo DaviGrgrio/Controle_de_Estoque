@@ -1,5 +1,5 @@
 from cadastro import cadastrar
-
+from estoque import (buscar_produto, listar_produtos, adicionar_quantidade, retirar_quantidade, excluir produto)
 
 estoque = {}
 print("\n---------Controle de Estoque----------")
@@ -15,5 +15,10 @@ opcao = input("\nDigite uma das opções: ")
 if opcao == "1":
     cadastrar()
 elif opcao == "2": 
-    pass
+    listar_produtos(estoque)    
+elif opcao == "3":
+    a
+
+    
+    
     
