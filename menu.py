@@ -1,4 +1,4 @@
-from cadastro import cadastrar
+from cadastro import cadastrar, validacao_numerica
 from estoque import (buscar_produto, listar_produtos, adicionar_quantidade, retirar_quantidade, excluir_produto, carregar_estoque)
 
     #Carrega o estoque salvo
@@ -29,12 +29,12 @@ while True:
             
     elif opcao == "4":
         id_produto = input("Digite o ID do produto: ")
-        quantidade = int(input("Digite a quantidade a adicionar: "))
+        quantidade = validacao_numerica("Digite a quantidade a adicionar: ")
         adicionar_quantidade(estoque, id_produto, quantidade)
         
     elif opcao == "5":
         id_produto = input("Digite o ID do produto: ")
-        quantidade = int(input("Digite a quantidade a retirar: "))
+        quantidade = validacao_numerica("Digite a quantidade a retirar: "))
         retirar_quantidade(estoque, id_produto, quantidade)
         
     elif opcao == "6":
