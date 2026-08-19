@@ -40,10 +40,11 @@ Permitir o cadastro e gerenciamento de produtos, facilitando o controle das quan
   CONTROLE DE ESTOQUE
   - 1 -Cadastrar produto
   - 2 -Consultar estoque
-  - 3 -Adicionar quantidade
-  - 4 -Retirar quantidade
-  - 5 -Excluir produto
-  - 6 -Sair
+  - 3 -Buscar produto
+  - 4 -Adicionar quantidade
+  - 5 -Retirar quantidade
+  - 6 -Excluir o produto
+  - 0 -Sair do programa
 # Autores
 - Davi Gregorio
 - Maria Giovanna
