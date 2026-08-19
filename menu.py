@@ -16,14 +16,21 @@ opcao = input("\nDigite uma das opções: ")
 
 if opcao == "1":
     cadastrar()
-elif opcao == "2": 
+elif opcao == "2":
+    listar_produtos()
+elif opcao == "3": 
     buscar_produtos()    
-elif opcao == "3":
-    adicionar_produto()
 elif opcao == "4":
-    retirar_quantidade()
+    adicionar_produto()
 elif opcao == "5":
+    retirar_quantidade()
+elif opcao == "6":
     excluir_produto()
+elif opcao == "0":
+    print("\nSaindo do sistema...")
+    break
+else:
+    print("\nOpção invalida. Digite uma opção válida.")
     
     
     
