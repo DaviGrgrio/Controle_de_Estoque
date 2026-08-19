@@ -34,7 +34,7 @@ while True:
         
     elif opcao == "5":
         id_produto = input("Digite o ID do produto: ")
-        quantidade = validacao_numerica("Digite a quantidade a retirar: "))
+        quantidade = validacao_numerica("Digite a quantidade a retirar: ")
         retirar_quantidade(estoque, id_produto, quantidade)
         
     elif opcao == "6":
